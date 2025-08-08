@@ -19,7 +19,7 @@ function isNumber(value) {
     console.log("Вы ввели не число");
     return undefined;
   }
-  return value;
+  return +value;
 }
 
 //Функция обработки ввода и обновления списка
@@ -32,6 +32,7 @@ function handleInputAndRender(promptMessage, callback) {
 
   if (value === "") {
     alert("Вы ничего не ввели");
+    filterFlag = 0;
     renderList(HeightsArr);
     return;
   }
@@ -85,6 +86,7 @@ function renderList(arr) {
 
 //Исходный массив
 let HeightsArr = [164, 157, 160, 143, 170];
+let filterFlag;
 
 //DOM-список
 const heightsList = document.querySelector('.heights-students__list');
@@ -97,6 +99,10 @@ const btnFilterHeight = document.getElementById('filterHeight');
 btnAddHeight.onclick = function () {
   handleInputAndRender("Добавьте рост", (newHeight) => {
     HeightsArr.push(newHeight);
+    if (filterFlag && filterFlag !== "") {
+      renderList(filter(HeightsArr, filterFlag));
+      return;
+    }
     renderList(HeightsArr);
   });
 }
@@ -104,7 +110,8 @@ btnAddHeight.onclick = function () {
 //Клик по кнопке отфильтровать
 btnFilterHeight.onclick = function () {
   handleInputAndRender("Введите рост для фильтрации", (minHeight) => {
-    renderList(filter(HeightsArr, minHeight));
+    filterFlag = minHeight;
+    renderList(filter(HeightsArr, filterFlag));
   });
 }
 
