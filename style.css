@@ -109,6 +109,18 @@ body {
   background-color: #ff7818;
 }
 
+.btn--blue {
+  background-color: rgb(25, 39, 192);
+}
+
+.btn--blue:focus-visible {
+  background-color: blue;
+}
+
+.btn--blue:hover {
+  background-color: blue;
+}
+
 /* ----------------------------------------------- */
 .heights-students {
   overflow: hidden;
@@ -118,20 +130,19 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 1030px;
-  padding-left: 25px;
 
   row-gap: 15px;
 }
-
 
 .heights-students__main-title {
   margin: 0 0 00px;
 }
 
 .heights-students__btns-wrap {
-  margin: 0 0 20px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
 
   gap: 20px;
 }
@@ -141,6 +152,7 @@ body {
   display: flex;
   flex-direction: column;
   counter-reset: example 0;
+
   gap: 10px;
 }
 
@@ -148,24 +160,22 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: -20px;
-  width: 25px;
+  left: -5px;
+  width: 10px;
   height: 100%;
-  background-image: url("icon-paragraf.svg"), url("icon-paragraf.svg"), url("icon-paragraf.svg");
-  background-repeat: repeat-y;
-  background-position: center 0, center 5px, center 10px;
-  background-size: 35px 60px;
+  border-radius: 10px;
+  background-color: darkseagreen;
 }
 
 .heights-students__item {
-  padding: 10px 10px 0;
   display: flex;
   align-items: center;
-  font-size: clamp(1.125rem, 0.967rem + 0.79vw, 1.625rem);
+  padding: 10px 10px 0;
+  font-size: clamp(1.125rem, .967rem + .79vw, 1.625rem);
   counter-increment: example 1;
+  transition: background-color .3s ease-out, transform .3s ease-out;
 
   column-gap: 5px;
-  transition: background-color 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .heights-students__item--finded {
